@@ -1,0 +1,9 @@
+news1 : friendly school opens...
+
+news2 : Communication with experienced teachers...
+
+news3 : science research facility...
+
+right: png image after banner
+
+value: left image 

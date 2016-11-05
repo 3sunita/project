@@ -1,0 +1,119 @@
+/*░░░▒▒▒▓▓▓███  COMMON STAGE STYLING  ███████████████████████████████████████████████████▓▓▓▒▒▒░░░*/
+
+.stage {
+    display: block;
+    position: relative;
+    width: 100%;
+	margin: 0px auto;
+	padding-bottom: 33%;
+	border: none;
+	overflow: hidden;
+	margin-top:118px;
+}
+
+.slide {
+    display: block;
+    position: absolute;
+	width: 100%;
+	height: 100%;
+    top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+    background-size: cover;
+	background-position: center;
+    opacity: 0;
+	z-index: 1;
+}
+
+.slide span {
+	display: block;
+	font-size: calc(.9vw + .9vh + .45vmin);
+	position: absolute;
+	bottom: 10%;
+	left: 4%;
+	background-color:#000000;
+	padding: calc(.75vw + .75vh + .375vmin) calc(1.1vw + 1.1vh + .55vmin);
+	color: #fff;
+	text-shadow: 1px 1px 1px rgba(0,0,0,.1);
+	border-radius: 4px;
+	font-weight: 700;
+	font-size:40px;
+}
+
+.next,
+.prev {
+	transition: 150ms linear all;
+	position: absolute;
+	top: 50%;
+	margin-top: -10px;
+	border-width: calc(.25vw + .25vh + .125vmin) calc(.25vw + .25vh + .125vmin) 0 0;
+	border-style: solid;
+	border-color: #fff;
+	width: calc(.75vw + .75vh + .375vmin);
+	height: calc(.75vw + .75vh + .375vmin);
+	cursor: pointer;
+	opacity: .5;
+	filter: drop-shadow(0 0 5px rgba(0,0,0,.1));
+}
+.next {
+	right: 25px; z-index: 10;
+	transform: rotate(45deg);
+}
+.prev {
+	left: 25px; z-index: 10;
+	transform: rotate(-135deg);
+}
+.next:hover,
+.next:active,
+.prev:hover,
+.prev:active {
+	opacity: 1;
+}
+
+
+
+/*░░░▒▒▒▓▓▓███  TRANSITION-BASED STAGE SLIDES  ██████████████████████████████████████████▓▓▓▒▒▒░░░*/
+
+/* Normal slide in vanilla/inactive state */
+#stage1 .slide {
+    transition-property: opacity, transform, z-index;
+	transition-duration: 0ms;
+	transition-function: linear;
+	transition-delay: 5000ms, 5000ms, 0ms;
+	transform: scale(2) rotate(10deg);
+}
+
+/* Active slide */
+#stage1 .slide.on {
+	transition-property: opacity, transform, z-index;
+	transition-duration: 5000ms, 5000ms, 0ms;
+	transition-function: linear;
+	transition-delay: 0ms;
+	transform: scale(1);
+	opacity: 1;
+	z-index: 10;
+}
+
+/* .slide activated by clicking next/prev navigation button.
+ * May have, for instance, faster transition time, or a completely differen effect */
+#stage1 .slide.on.toggled {
+	transition-property: opacity, transform, z-index;
+	transition-duration: 1000ms, 1000ms, 0ms;
+	transition-function: linear;
+	transition-delay: 0ms;
+	transform: scale(1);
+	opacity: 1;
+	z-index: 10;
+}
+
+/* .slide deactivated by clicking next/prev navigation button. */
+#stage1 .slide.toggled {
+	transition-property: opacity, transform, z-index;
+	transition-duration: 1000ms, 1000ms, 0ms;
+	transition-function: linear;
+	transition-delay: 0ms;
+	transform: scale(2) rotate(10deg);
+	opacity: 0.0001;
+	z-index: 1;
+}
